@@ -1,7 +1,7 @@
 Package: YourCats
 Version: 1.6.2
 Date: 2015-02-11
-Title: Forecasting age-sex-country-cause mortality rates   
+Title: Forcatsing the world for IHME. Leggo.    
 Author:  Federico Girosi <girosi@rand.org>  
          Gary King <king@harvard.edu>
          Elena Villalon <evillalon@latte.harvard.edu>
@@ -10,7 +10,8 @@ Author:  Federico Girosi <girosi@rand.org>
 Maintainer: Konstantin Kashin <kkashin@fas.harvard.edu>
 Depends: R (>= 3.0), ggplot2
 Imports: grid, gridExtra, lattice, foreign, reshape2
-Description: Forcatsing the world for IHME. Leggo.  
+Description: Edit of the original YourCast code so that we dont have to rely on
+the old syntax.
 License: GPL (>=2)
 URL: http://gking.harvard.edu
 Copyright: (C) 2007-2013. Federico Girosi and Gary King.
