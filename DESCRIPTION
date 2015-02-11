@@ -8,7 +8,7 @@ Author:  Federico Girosi <girosi@rand.org>
 	 Jon Bischof <jbischof@fas.harvard.edu>
 	 Konstantin Kashin <kkashin@fas.harvard.edu>
 Maintainer: Konstantin Kashin <kkashin@fas.harvard.edu>
-Depends: R (>= 3.2.0), ggplot2
+Depends: R (>= 3.0), ggplot2
 Imports: grid, gridExtra, lattice, foreign, reshape2
 Description: Forcatsing the world for IHME. Leggo.  
 License: GPL (>=2)
