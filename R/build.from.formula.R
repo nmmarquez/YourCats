@@ -1032,6 +1032,9 @@ split.whocov <- function(mat,sample.frame,verbose)
     
         years1 <- sort(years)
         
+        print(years)
+        print(years1)
+        
         if(any(years != years1))
            messout("Matrices should be sorted by year",verbose)
 
