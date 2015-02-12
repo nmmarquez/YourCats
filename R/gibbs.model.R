@@ -163,6 +163,7 @@ gibbs.sampler <- function(nsample=NULL,cxc.beta=NULL,bool=TRUE ){
   ttmp <- proc.time(); 
   for (n in 1:nsample){
    messout(n,verbose)
+   messout(timestamp(), verbose)
     for (c in 1:length(cntry.vec)) {
       
       if (!is.na(who.Hct.sigma) && age.prior == F && length(isle.cntry) > 0 ){

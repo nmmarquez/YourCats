@@ -226,7 +226,7 @@ if(getRversion() >= "2.15.1")  utils::globalVariables(c("y", "yhat","age","time"
 ### Age plot: time on x axis, dep var on y axis, groupings are ages
 ageplot <- function(el,age.opts, sample.frame){
 	if(is.null(age.opts$xlab)) {xlab <- "Time"}
-    if(is.null(age.opts$ylab)) {ylab <- "Data and Forecasts"}
+    if(is.null(age.opts$ylab)) {ylab <- "Data and Forecats"}
 	
 	times <- as.integer(rownames(el$y)) 
 	ages <- as.integer(colnames(el$y))
@@ -300,7 +300,7 @@ ageplot <- function(el,age.opts, sample.frame){
 ### time plot: age on x axis, dep var on y axis, groupings are times	
 timeplot <- function(el,time.opts,sample.frame){
     if(is.null(time.opts$xlab)) {xlab <- "Age"}
-    if(is.null(time.opts$ylab)) {ylab <- "Forecasts"}
+    if(is.null(time.opts$ylab)) {ylab <- "forecats"}
 	
 	times <- as.integer(rownames(el$y)) 
 	ages <- as.integer(colnames(el$y))
@@ -389,7 +389,7 @@ totalplot <- function(el,tot.opts,sample.frame){
 	
 	plot.total <- ggplot(data=switch(as.character(tot.opts$insamp.predict),"TRUE"=totals.df,"FALSE"=totals.df.pred), aes(x=time, y=yhat)) +
     	geom_line() + theme_bw() + scale_x_continuous("Time") +
-    	scale_y_continuous("Data and Forecasts (Totals)")
+    	scale_y_continuous("Data and forecats (Totals)")
     	if(tot.opts$insamp.obs){
     		plot.total <- plot.total + geom_point(data=na.omit(totals.df),aes(x=time,y=y))
     	}
@@ -426,7 +426,7 @@ threedimplot <- function(el,threedim.opts,sample.frame) {
   # Set up labels 
   if(is.null(threedim.opts$xlab)) {threedim.opts$xlab <- "Time"}
   if(is.null(threedim.opts$ylab)) {threedim.opts$ylab <- "Age"}
-  if(is.null(threedim.opts$zlab)) {threedim.opts$zlab <- "Forecasts"}
+  if(is.null(threedim.opts$zlab)) {threedim.opts$zlab <- "forecats"}
   
   ages <- colnames(el$yhat)
   times <- rownames(el$yhat)

@@ -914,8 +914,9 @@ check.depvar <- function(formula)
     
     log.poiss <- F
     ix <- unlist(sapply(c("l", "o", "g"), match, vec))
-    if (all(ix == 1:3))
-      log.poiss <- T
+    # Not sure why this is here and why its written like this
+    #if (all(ix == 1:3))
+    #  log.poiss <- T
     
     ch <- sub("log\\(([a-z A-Z / \\. *]+)+\\)","\\1", ls) ### from "log(gdp)" to "gdp"
  ###   ch <-  sub("([a-z A-Z \\.]+)\\(([a-z A-Z / * \\+ \\. 0-9]+)+\\)","\\2",ls)
