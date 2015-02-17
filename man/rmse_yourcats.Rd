@@ -3,7 +3,7 @@
 
 \title{Get in and out of sample RMSE}
 
-\description{yourcast class summary function}
+\description{yourcats class summary function}
 
 \usage{
 \method{rmse_yourcats}{yourcast}(object)

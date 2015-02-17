@@ -5,7 +5,7 @@ export(yourcast, yourprep,
        print.summary.yourcast,
        print.yourprep,print.yourcast,
        summary.yourcast, plot.yourcast, 
-       lifetable, array.yourcast, rmse_yourcats)
+       lifetable, array.yourcast, rmse_yourcats, write_cats)
  
 S3method(plot, yourcast)
 S3method(summary, yourcast)

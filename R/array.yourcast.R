@@ -35,7 +35,8 @@ array.yourcast <- function(x,unlog=FALSE){
 		array.out
 	})
 	names(geolist) <- csid.unique
-	if(length(geolist)==1){return(geolist[[1]])} else{
-		return(geolist)
-	}
+	#if(length(geolist)==1){return(geolist[[1]])} else{
+	#	return(geolist)
+	#}
+    return(geolist)
 }
