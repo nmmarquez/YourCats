@@ -44,7 +44,7 @@ counter to reach 500...")
                      elim.collinear=T,zero.mean=zmean, low.pow=F,
                      nsample=500, Ha.sigma=0.3,Ha.sigma.sd=0,
                      Ht.sigma=1, Ht.sigma.sd=0,Hat.sigma=0.01,
-                     Hat.sigma.sd=0,Hct.sigma=0.01,Hct.sigma.sd=0,
+                     Hat.sigma.sd=0,Hct.sigma=1,Hct.sigma.sd=0,
                      Hct.t.deriv=c(0,0,1), Ha.deriv=c(0,1),
                      Hat.a.deriv=c(0,1),Ht.deriv=c(0,0,1),
                      Hat.t.deriv=c(0,0,1))

@@ -17,7 +17,7 @@ write_cats <- function(df, stub="mort", sex_id=1, base=paste0(getwd(), "/"),
             sub_df[,"year"] <- NULL
             
             if (nrow(sub_df) > 0){
-                write.table(na.omit(sub_df[,vars]), 
+                write.table(sub_df[,vars], 
                             file=paste0(base, stub, loc, age, ".txt"))
             }
         }
