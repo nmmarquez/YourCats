@@ -8,25 +8,31 @@
 ### plotting method written by Jon Bischof
 ########################################################
 
+
 ##### START OF PLOT FUNCTION #####
-# plot.yourcast <- function(x, plots=c("age","time"),
-# 						 title=NULL, subtitle=NULL, age.opts=list(), time.opts=list(),
-#                          threedim.opts=list(),totcount.opts=list(), ex0.opts=list(),
-#                          print="device",
-#                          print.args = list(),
-#                          dv.log=NA,...){
-x <- ylc2
-plots=c("age","time")
-title=NULL
-subtitle=NULL
-age.opts=list()
-time.opts=list()
-threedim.opts=list()
-totcount.opts=list()
-ex0.opts=list()
-print="device"
-print.args = list()
-dv.log=NA
+plot2.yourcast <- function(x, plots=c("age","time"),
+						 title=NULL, subtitle=NULL, age.opts=list(), time.opts=list(),
+                         threedim.opts=list(),totcount.opts=list(), ex0.opts=list(),
+                         print="device",
+                         print.args = list(), country = NULL,
+                         dv.log=NA,...){
+# x <- ylc2
+# plots=c("age","time")
+# title=NULL
+# subtitle=NULL
+# age.opts=list()
+# time.opts=list()
+# threedim.opts=list()
+# totcount.opts=list()
+# ex0.opts=list()
+# print="device"
+# print.args = list()
+# dv.log=NA
+# country = "ARG"
+
+    require(reshape2)
+    require(grid)
+    require(gridExtra)
 
   	# get plot types and do checks
   	types <- match.arg(plots,c("age","time","totcount","ex0","threedim"),several.ok=TRUE)
@@ -74,7 +80,7 @@ dv.log=NA
         warning("Unknown names in life expectancy plot options: ", paste(noNames, collapse = ", "), call.=FALSE)     
     if (length(noNames <- nam.threedim.opts[!nam.threedim.opts %in% threedim.names])) 
         warning("Unknown names in 3D plot options: ", paste(noNames, collapse = ", "), call.=FALSE)    
-   if (length(noNamesPrint <- nam.print.args[! nam.print.args %in% print.names])) 
+    if (length(noNamesPrint <- nam.print.args[! nam.print.args %in% print.names])) 
         warning("Unknown names in plot print options: ", paste(noNamesPrint, collapse = ", "), call.=FALSE)    		 
     				 
   	# loading aux files from 'yourcast' object
@@ -123,6 +129,11 @@ dv.log=NA
   	names(csid.vec) <- names(x$yhat)
 	csid.unique <- unique(csid.vec)
 
+  if(!is.null(country)) { 
+    csid.unique <- G.names[G.names$iso3 == country, "location_id"]
+  }
+
+
 	# make a geolist per each csid and assign to environment as geoGGGG where GGGG is code
 	# geolist is a list, with first element matrix y (observed values) and second element yhat (predicted values)
 	# rows are times, columns are ages
@@ -143,6 +154,9 @@ dv.log=NA
 	rm(csid.i,y.mat,yhat.mat,geolist)
 	}
 	
+  if(!is.null(country)) { 
+    geonames <- paste0("geo", G.names[G.names$iso3 == country, "location_id"])
+  }
   # If printing to pdf and filenames provided, make sure vector of
   # strings the correct length
   filename <- print.options$filename
@@ -163,6 +177,8 @@ dv.log=NA
   sf <- x$aux$sample.frame
   
   # iterate over geonames and plot
+
+
   for(i in 1:length(geonames)) {	
       # Use either user provided file name or default
       if(!is.null(filename)){
@@ -187,6 +203,7 @@ dv.log=NA
         cntryname <- G.names[grep(csid.unique[i],
                                   G.names[,1]),2]}
      
+      if(!is.null(country)) cntryname <- country
      # define main = title for entire device
      # format for main is "title, cntryname" if both are provided; else either "title", "ctryname" or NULL
      main <- paste(if(!is.null(title)){title},
@@ -211,6 +228,7 @@ dv.log=NA
 	if(print=="device"){if(i != length(geonames)) {
     user.option(i,csid.unique,cntryname,G.names)}}
   } # end of loop over geonames
+
 } # end of plot fxn
 
 ############################################
