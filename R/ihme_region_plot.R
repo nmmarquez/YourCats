@@ -22,6 +22,7 @@ ihme_region_plot <- function(yc_object, region, age, use_super_region=F, ...){
         lines(start:end, preds[[i]][,age], col=cl[i])
         lines(start:end, data[[i]][,age], col=cl[i], type="b", pch=19, cex=.5)
     }
+    lines(c(forcats, forcats), c(ymin, ymax), lwd=1.5)
     legend("bottomleft", legend=c("predicted", "actual"), 
            col=1, lty=c(1,2), pch=c(NA, 19), cex=.5)
 }
