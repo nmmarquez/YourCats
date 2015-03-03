@@ -4,7 +4,7 @@ export(yourcast, yourprep,
        user.prompt, histograph, 
        print.summary.yourcast,
        print.yourprep,print.yourcast,
-       summary.yourcast, plot.yourcast, plot2.yourcast,
+       summary.yourcast, plot.yourcast, plot2.yourcast, rmse_location_yourcats,
        lifetable, array.yourcast, rmse_yourcats, write_cats, ihme_region_plot)
  
 S3method(plot, yourcast)
