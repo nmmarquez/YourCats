@@ -11,12 +11,10 @@ rmse_location_yourcats <- function(yc){
         rowSums((array_yc[[i]][,,"yhat"] - array_yc[[i]][,,"y"])**2))
     rmse <- as.data.frame(t(sapply(rmse, function(x) 
         c(sum(x[in_years]/n_in), sum(x[out_years]/n_out)))))
+    names(rmse) <- c("in", "out")
     ############################################################################
     #               NEAL YOU IDIOT FIX THIS SHITTY SHITTY CODE                 #
     ############################################################################
-    names(rmse) <- yc$aux$G.names$iso3 # <------------------------------------
-    for(i in 1:length(rmse)){
-        names(rmse[[i]]) <- c("in", "out")
-    }
+    rmse$iso <- yc$aux$G.names$iso3 # <------------------------------------
     rmse
 }
