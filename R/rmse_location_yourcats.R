@@ -6,15 +6,22 @@ rmse_location_yourcats <- function(yc){
     n_in <- groupN * length(in_years)
     n_out <- groupN * length(out_years)
     array_yc <- array.yourcast(yc)
-    
-    rmse <- lapply(1:n, function(i) 
-        rowSums((array_yc[[i]][,,"yhat"] - array_yc[[i]][,,"y"])**2))
-    rmse <- as.data.frame(t(sapply(rmse, function(x) 
-        c(sum(x[in_years]/n_in), sum(x[out_years]/n_out)))))
-    names(rmse) <- c("in", "out")
+    y_in <- lapply(array_yc, function(x)c(x[in_years,,1]))
+    y_out <- lapply(array_yc, function(x)c(x[out_years,,1]))
+    y_hat_in <- lapply(array_yc, function(x)c(x[in_years,,2]))
+    y_hat_out <- lapply(array_yc, function(x)c(x[out_years,,2]))
+    rmse_func <- function(y, yhat){
+        (sum((yhat - y)**2)/ length(y))**.5
+    }
+    rmse_in <- sapply(1:length(y_in), function(i) 
+        rmse_func(y_in[[i]], y_hat_in[[i]]))
+    rmse_out <- sapply(1:length(y_out), function(i) 
+        rmse_func(y_out[[i]], y_hat_out[[i]]))
+    rmse <- data.frame(rmse_in, rmse_out, location_id=names(array_yc),
+                       stringsAsFactors=FALSE)
     ############################################################################
     #               NEAL YOU IDIOT FIX THIS SHITTY SHITTY CODE                 #
     ############################################################################
-    rmse$iso <- yc$aux$G.names$iso3 # <------------------------------------
+    rmse <- merge(rmse, yc$aux$G.names) # <---------------
     rmse
 }
