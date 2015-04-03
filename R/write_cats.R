@@ -1,8 +1,8 @@
 write_cats <- function(df, age_var="age", loc_var="location_id", time="year",
-                       stub="mort", sex_id=1, base=paste0(getwd(), "/"), 
+                       stub="mort", base=paste0(getwd(), "/"), 
                        no_vars=c("location_id", "iso3", "age_group_id", 
                                  "year", "sex")){
-    df <- subset(df, sex == sex_id)
+    #df <- subset(df, sex == sex_id)
     #df[,"location_id"] <- df[,"location_id"] + 1000
     df[,loc_var] <- sprintf("%04d", df[,loc_var])
     #df[,"age_group_id"] <- df[,"age_group_id"] + 10
